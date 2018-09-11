@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "0d792be5-afd4-44a8-bd65-66c6e356648f",
+		"name": "Mastermind",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new Game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/v1/mastermind/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"mastermind",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Feedback",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"value\": 0\n    },\n    {\n        \"value\": 3\n    },\n    {\n        \"value\": 3\n    },\n    {\n        \"value\": 1\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/mastermind/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"mastermind",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Historic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/v1/mastermind/1/historic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"mastermind",
+						"1",
+						"historic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
