@@ -26,19 +26,19 @@ public class RatingHistoric implements Serializable{
 	
 	@ElementCollection
 	@OneToMany(cascade={CascadeType.ALL})
-	private List<RatingClass> historic;
+	private List<Rating> historic;
 
-	@OneToMany(targetEntity=RatingClass.class, mappedBy="rating", 
+	@OneToMany(targetEntity=Rating.class, mappedBy="rating", 
 			fetch=FetchType.EAGER)
-	public List<RatingClass> getHistoric() {
+	public List<Rating> getHistoric() {
 		return historic;
 	}
 
-	public void setHistoric(List<RatingClass> historic) {
+	public void setHistoric(List<Rating> historic) {
 		this.historic = historic;
 	}
 	
-	public static RatingHistoric build(List<RatingClass> r) {
+	public static RatingHistoric build(List<Rating> r) {
 		RatingHistoric ratingHistoric = new RatingHistoric();
 		ratingHistoric.setHistoric(r);
 		return ratingHistoric;

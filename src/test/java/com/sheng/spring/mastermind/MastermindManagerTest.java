@@ -9,8 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sheng.spring.mastermind.entity.ColorClass;
-import com.sheng.spring.mastermind.entity.RatingClass;
+import com.sheng.spring.mastermind.entity.Color;
+import com.sheng.spring.mastermind.entity.Rating;
 
 
 public class MastermindManagerTest {
@@ -32,13 +32,13 @@ public class MastermindManagerTest {
 	@Test
 	public void test0001CheckSecuencyCorrectly() {
 		
-		List<ColorClass> cipherGenerated = new ArrayList<>();
-		cipherGenerated.add (ColorClass.build(ColorClass.BLUE));
-		cipherGenerated.add (ColorClass.build(ColorClass.RED));
-		cipherGenerated.add (ColorClass.build(ColorClass.GREEN));
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
+		List<Color> cipherGenerated = new ArrayList<>();
+		cipherGenerated.add (Color.build(Color.BLUE));
+		cipherGenerated.add (Color.build(Color.RED));
+		cipherGenerated.add (Color.build(Color.GREEN));
+		cipherGenerated.add (Color.build(Color.YELLOW));
 		
-		List<RatingClass> result = mastermindManager.checkSecuency(cipherGenerated, cipherGenerated);
+		List<Rating> result = mastermindManager.checkSecuency(cipherGenerated, cipherGenerated);
 		
 		assertEquals(4, result.size());
 		assertEquals(true, mastermindManager.gameIsOver(cipherGenerated, result));
@@ -50,23 +50,23 @@ public class MastermindManagerTest {
 	@Test
 	public void test0002CheckSecuencyHaveTwoBlackCodePeg() {
 		
-		List<ColorClass> cipherGenerated = new ArrayList<>();
-		cipherGenerated.add (ColorClass.build(ColorClass.BLUE));
-		cipherGenerated.add (ColorClass.build(ColorClass.RED));
-		cipherGenerated.add (ColorClass.build(ColorClass.GREEN));
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
+		List<Color> cipherGenerated = new ArrayList<>();
+		cipherGenerated.add (Color.build(Color.BLUE));
+		cipherGenerated.add (Color.build(Color.RED));
+		cipherGenerated.add (Color.build(Color.GREEN));
+		cipherGenerated.add (Color.build(Color.YELLOW));
 		
-		List<ColorClass> codeGuess = new ArrayList<>();
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
-		codeGuess.add (ColorClass.build(ColorClass.RED));
-		codeGuess.add (ColorClass.build(ColorClass.RED));
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
+		List<Color> codeGuess = new ArrayList<>();
+		codeGuess.add (Color.build(Color.BLUE));
+		codeGuess.add (Color.build(Color.RED));
+		codeGuess.add (Color.build(Color.RED));
+		codeGuess.add (Color.build(Color.BLUE));
 		
-		List<RatingClass> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
+		List<Rating> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
 		
 		assertEquals(2, result.size());
-		assertEquals(RatingClass.BLACK, result.get(0).getValue());
-		assertEquals(RatingClass.BLACK, result.get(1).getValue());
+		assertEquals(Rating.BLACK, result.get(0).getValue());
+		assertEquals(Rating.BLACK, result.get(1).getValue());
 	}
 	
 	/**
@@ -75,23 +75,23 @@ public class MastermindManagerTest {
 	@Test
 	public void test0003CheckSecuencyHaveTwoWhiteCodePeg() {
 		
-		List<ColorClass> cipherGenerated = new ArrayList<>();
-		cipherGenerated.add (ColorClass.build(ColorClass.BLUE));
-		cipherGenerated.add (ColorClass.build(ColorClass.RED));
-		cipherGenerated.add (ColorClass.build(ColorClass.GREEN));
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
+		List<Color> cipherGenerated = new ArrayList<>();
+		cipherGenerated.add (Color.build(Color.BLUE));
+		cipherGenerated.add (Color.build(Color.RED));
+		cipherGenerated.add (Color.build(Color.GREEN));
+		cipherGenerated.add (Color.build(Color.YELLOW));
 		
-		List<ColorClass> codeGuess = new ArrayList<>();
-		codeGuess.add (ColorClass.build(ColorClass.YELLOW));
-		codeGuess.add (ColorClass.build(ColorClass.YELLOW));
-		codeGuess.add (ColorClass.build(ColorClass.RED));
-		codeGuess.add (ColorClass.build(ColorClass.RED));
+		List<Color> codeGuess = new ArrayList<>();
+		codeGuess.add (Color.build(Color.YELLOW));
+		codeGuess.add (Color.build(Color.YELLOW));
+		codeGuess.add (Color.build(Color.RED));
+		codeGuess.add (Color.build(Color.RED));
 		
-		List<RatingClass> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
+		List<Rating> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
 		
 		assertEquals(2, result.size());
-		assertEquals(RatingClass.WHITE, result.get(0).getValue());
-		assertEquals(RatingClass.WHITE, result.get(1).getValue());
+		assertEquals(Rating.WHITE, result.get(0).getValue());
+		assertEquals(Rating.WHITE, result.get(1).getValue());
 	}
 
 	/**
@@ -100,23 +100,23 @@ public class MastermindManagerTest {
 	@Test
 	public void test0004CheckSecuencyHaveTwoWhiteAndTwoBlackCodePeg() {
 		
-		List<ColorClass> cipherGenerated = new ArrayList<>();
-		cipherGenerated.add (ColorClass.build(ColorClass.BLUE));
-		cipherGenerated.add (ColorClass.build(ColorClass.RED));
-		cipherGenerated.add (ColorClass.build(ColorClass.GREEN));
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
+		List<Color> cipherGenerated = new ArrayList<>();
+		cipherGenerated.add (Color.build(Color.BLUE));
+		cipherGenerated.add (Color.build(Color.RED));
+		cipherGenerated.add (Color.build(Color.GREEN));
+		cipherGenerated.add (Color.build(Color.YELLOW));
 		
-		List<ColorClass> codeGuess = new ArrayList<>();
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
-		codeGuess.add (ColorClass.build(ColorClass.YELLOW));
-		codeGuess.add (ColorClass.build(ColorClass.GREEN));
-		codeGuess.add (ColorClass.build(ColorClass.RED));
+		List<Color> codeGuess = new ArrayList<>();
+		codeGuess.add (Color.build(Color.BLUE));
+		codeGuess.add (Color.build(Color.YELLOW));
+		codeGuess.add (Color.build(Color.GREEN));
+		codeGuess.add (Color.build(Color.RED));
 		
-		List<RatingClass> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
+		List<Rating> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
 		
 		assertEquals(4, result.size());
-		assertEquals(Long.valueOf(2), result.stream().filter((r) -> r.getValue() == RatingClass.WHITE).count());
-		assertEquals(Long.valueOf(2), result.stream().filter((r) -> r.getValue() == RatingClass.BLACK).count());
+		assertEquals(Long.valueOf(2), result.stream().filter((r) -> r.getValue() == Rating.WHITE).count());
+		assertEquals(Long.valueOf(2), result.stream().filter((r) -> r.getValue() == Rating.BLACK).count());
 
 	}
 	
@@ -126,19 +126,19 @@ public class MastermindManagerTest {
 	@Test
 	public void test0005CheckSecuencyNotHaveCodePeg() {
 		
-		List<ColorClass> cipherGenerated = new ArrayList<>();
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
-		cipherGenerated.add (ColorClass.build(ColorClass.RED));
-		cipherGenerated.add (ColorClass.build(ColorClass.GREEN));
-		cipherGenerated.add (ColorClass.build(ColorClass.YELLOW));
+		List<Color> cipherGenerated = new ArrayList<>();
+		cipherGenerated.add (Color.build(Color.YELLOW));
+		cipherGenerated.add (Color.build(Color.RED));
+		cipherGenerated.add (Color.build(Color.GREEN));
+		cipherGenerated.add (Color.build(Color.YELLOW));
 		
-		List<ColorClass> codeGuess = new ArrayList<>();
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
-		codeGuess.add (ColorClass.build(ColorClass.BLUE));
+		List<Color> codeGuess = new ArrayList<>();
+		codeGuess.add (Color.build(Color.BLUE));
+		codeGuess.add (Color.build(Color.BLUE));
+		codeGuess.add (Color.build(Color.BLUE));
+		codeGuess.add (Color.build(Color.BLUE));
 		
-		List<RatingClass> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
+		List<Rating> result = mastermindManager.checkSecuency(cipherGenerated, codeGuess);
 		
 		assertEquals(0, result.size());
 

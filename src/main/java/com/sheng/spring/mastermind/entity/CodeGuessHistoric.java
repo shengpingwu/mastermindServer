@@ -26,20 +26,20 @@ public class CodeGuessHistoric implements Serializable{
 	
 	@ElementCollection
 	@OneToMany(cascade={CascadeType.ALL})
-	private List<ColorClass> historic;
+	private List<Color> historic;
 
 	
-	@OneToMany(targetEntity=ColorClass.class, mappedBy="codeguess", 
+	@OneToMany(targetEntity=Color.class, mappedBy="codeguess", 
 			fetch=FetchType.EAGER)
-	public List<ColorClass> getHistoric() {
+	public List<Color> getHistoric() {
 		return historic;
 	}
 	
-	public void setHistoric(List<ColorClass> historic) {
+	public void setHistoric(List<Color> historic) {
 		this.historic = historic;
 	}
 	
-	public static CodeGuessHistoric build(List<ColorClass> r) {
+	public static CodeGuessHistoric build(List<Color> r) {
 		CodeGuessHistoric codeH = new CodeGuessHistoric();
 		codeH.setHistoric(r);
 		

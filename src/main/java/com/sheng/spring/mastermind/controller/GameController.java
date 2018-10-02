@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sheng.spring.mastermind.MastermindManager;
 import com.sheng.spring.mastermind.entity.CodeGuessHistoric;
-import com.sheng.spring.mastermind.entity.ColorClass;
+import com.sheng.spring.mastermind.entity.Color;
 import com.sheng.spring.mastermind.entity.IMastermindGameRepository;
 import com.sheng.spring.mastermind.entity.MastermindGame;
-import com.sheng.spring.mastermind.entity.RatingClass;
+import com.sheng.spring.mastermind.entity.Rating;
 import com.sheng.spring.mastermind.entity.RatingHistoric;
 import com.sheng.spring.mastermind.model.ResponseMastermind;
 
@@ -37,11 +37,11 @@ public class GameController {
 	@GetMapping("/mastermind")
 	public ResponseEntity<ResponseMastermind> createGame() {
 
-		List<RatingClass> ratingResult = new ArrayList<>();
+		List<Rating> ratingResult = new ArrayList<>();
 		List<RatingHistoric> historicRating = new ArrayList<>();
 		List<CodeGuessHistoric> historicCodeGuess =new ArrayList<>();
 		MastermindGame mastermindGame = new MastermindGame();
-		mastermindGame.setCipherGenerated(mastermindManager.generatedSecuency());
+		mastermindGame.setCipherGenerated(mastermindManager.generatedSequence());
 		mastermindGame.setHistoricCodeGuess(historicCodeGuess);
 		mastermindGame.setHistoricRating(historicRating);		
 
@@ -55,7 +55,7 @@ public class GameController {
 	@GetMapping("/mastermind/{id}/historic")
 	public ResponseEntity<ResponseMastermind> retrieveHistoric(@PathVariable Long id) {
 		
-		List<RatingClass> ratingResult = new ArrayList<>();
+		List<Rating> ratingResult = new ArrayList<>();
 		
 		Optional<MastermindGame> mastermindGame = mastermindGameRepository.findById(id);
 		
@@ -69,7 +69,7 @@ public class GameController {
 	}
 	
 	@PostMapping("/mastermind/{id}")
-	public ResponseEntity<ResponseMastermind> checkCodeGuess(@RequestBody List<ColorClass> codeGuess, @PathVariable Long id) {
+	public ResponseEntity<ResponseMastermind> checkCodeGuess(@RequestBody List<Color> codeGuess, @PathVariable Long id) {
 		
 		Optional<MastermindGame> mastermindGame = mastermindGameRepository.findById(id);
 		
@@ -79,7 +79,7 @@ public class GameController {
 		
 		MastermindGame currentMastermindGame = mastermindGame.get();
 		
-		List<RatingClass> ratingResult = mastermindManager.checkSecuency(currentMastermindGame.getCipherGenerated(), codeGuess);
+		List<Rating> ratingResult = mastermindManager.checkSecuency(currentMastermindGame.getCipherGenerated(), codeGuess);
 		Boolean gameIsFinish = mastermindManager.gameIsOver(currentMastermindGame.getCipherGenerated(), ratingResult);
 		
 		currentMastermindGame.getHistoricCodeGuess().add(CodeGuessHistoric.build(codeGuess));

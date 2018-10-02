@@ -4,14 +4,14 @@ import java.util.List;
 
 import com.sheng.spring.mastermind.entity.CodeGuessHistoric;
 import com.sheng.spring.mastermind.entity.MastermindGame;
-import com.sheng.spring.mastermind.entity.RatingClass;
+import com.sheng.spring.mastermind.entity.Rating;
 import com.sheng.spring.mastermind.entity.RatingHistoric;
 
 public class ResponseMastermind {
 	
 	private Long id; 
 	
-	private List<RatingClass>  feedbackLastCheck; 
+	private List<Rating>  feedbackLastCheck; 
 	
 	private List<RatingHistoric> historicRating;
 
@@ -35,7 +35,7 @@ public class ResponseMastermind {
 		return responseMastermind;
 	}
 	
-	public static ResponseMastermind build(MastermindGame mastermindGame, List<RatingClass> feedbackLastCheck, String message, Boolean gameIsFinish) {
+	public static ResponseMastermind build(MastermindGame mastermindGame, List<Rating> feedbackLastCheck, String message, Boolean gameIsFinish) {
 		
 		ResponseMastermind responseMastermind = new ResponseMastermind();
 		
@@ -52,14 +52,14 @@ public class ResponseMastermind {
 	/**
 	 * @return the feedbackLastCheck
 	 */
-	public List<RatingClass> getFeedbackLastCheck() {
+	public List<Rating> getFeedbackLastCheck() {
 		return feedbackLastCheck;
 	}
 
 	/**
 	 * @param feedbackLastCheck the feedbackLastCheck to set
 	 */
-	public void setFeedbackLastCheck(List<RatingClass> feedbackLastCheck) {
+	public void setFeedbackLastCheck(List<Rating> feedbackLastCheck) {
 		this.feedbackLastCheck = feedbackLastCheck;
 	}
 

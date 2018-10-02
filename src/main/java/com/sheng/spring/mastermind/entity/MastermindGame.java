@@ -28,7 +28,7 @@ public class MastermindGame implements Serializable {
 	
 	@ElementCollection
 	@OneToMany(cascade={CascadeType.ALL})
-	private List<ColorClass> cipherGenerated; 
+	private List<Color> cipherGenerated; 
 	
 	@ElementCollection
 	@OneToMany(cascade={CascadeType.ALL})
@@ -44,16 +44,16 @@ public class MastermindGame implements Serializable {
 	/**
 	 * @return the cipherGenerated
 	 */
-	@OneToMany(targetEntity=ColorClass.class, mappedBy="color", 
+	@OneToMany(targetEntity=Color.class, mappedBy="color", 
 			fetch=FetchType.EAGER)
-	public List<ColorClass> getCipherGenerated() {
+	public List<Color> getCipherGenerated() {
 		return cipherGenerated;
 	}
 
 	/**
 	 * @param cipherGenerated the cipherGenerated to set
 	 */
-	public void setCipherGenerated(List<ColorClass> cipherGenerated) {
+	public void setCipherGenerated(List<Color> cipherGenerated) {
 		this.cipherGenerated = cipherGenerated;
 	}
 	
